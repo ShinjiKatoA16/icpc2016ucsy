@@ -9,6 +9,7 @@ Sample program to solve ICPC 2016 at UCSY. There are 12 problems (Problem-A to P
 - Problem-E: Tree Pendant
 - Problem-F: Chocolates
 - Problem-G: Vampire Numbers
+             prob_g.py (elegant but slow), prob_g2.py (not smart but faster)
 - Problem-H: Like Father Like Son
 - Problem-I: Clustering
 - Problem-J: Green Fang and Ordering
