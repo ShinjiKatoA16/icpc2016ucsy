@@ -27,7 +27,10 @@ def solve(tc):
     except ZeroDivisionError:
         print('Infinity')
     else:
-        print(float(result))
+        if result == int(result):
+            print(int(result))
+        else:
+            print(float(result))
     return
 
 
