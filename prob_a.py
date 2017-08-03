@@ -130,7 +130,7 @@ def eval_formula(formula):
         1. Convert String to flat list of Tokens
                  ['(','1','+','(','23','*','345',')',')']
         2. Convert the flat list to nested list, each list has up to 3 element
-                 ['1','+',['23','*','345']]
+                 [1.0,'+', [23.0,'*',345.0] ]
         3. Evaluate the nested list
     '''
 
