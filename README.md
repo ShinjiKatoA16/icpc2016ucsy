@@ -15,3 +15,8 @@ Sample program to solve ICPC 2016 at UCSY. There are 12 problems (Problem-A to P
 - Problem-J: Green Fang and Ordering
 - Problem-K: One Time Pad
 - Problem-L: Password for Sweethearts
+
+- makefile:  C makefile using Glib
+- prob_d.c:  Baekry Delivery Schedule
+- proto.c:   Sample to handle list input
+- proto.in:  Sample input for proto.c
