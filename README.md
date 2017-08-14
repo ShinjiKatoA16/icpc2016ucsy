@@ -2,6 +2,8 @@
 
 Sample program to solve ICPC 2016 at UCSY. There are 12 problems (Problem-A to Problem-L). Problem set is located at <http://www.ucsy.edu.mm/ucsy/pages/2016_AR_Yangon_Contest_Problems.pdf>
 
+- How to solve: Explanation for following problems
+
 - Problem-A: Evaluation Fully Parenthesized Expression
 - Problem-B: The Election
 - Problem-C: Finding the Deteminant
