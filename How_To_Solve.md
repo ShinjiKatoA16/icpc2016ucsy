@@ -149,8 +149,6 @@ Keyword: Performance
 
 It seems to be that there is not good algorithm to solve Vampire number effectively. Basically, we need to solve this problem with *brute force*, but there are some ideas to reduce the volume of calculation.
 
-1. *C* code of most simple algorithm is like this. The O-notation of this algorithm is *O(n^2)*.
-
 ```
    for (n=U; n<=U; n++) {
        for (div=1; div<n; div++) {
@@ -159,9 +157,11 @@ It seems to be that there is not good algorithm to solve Vampire number effectiv
               ...
    }
 ```
+
+1. *C* code of most simple algorithm is like above. The O-notation of this algorithm is *O(n^2)*.
 2. We can improbe that by changing the range of div, if n is 8 digit, we need to check from 1000 to 9999. O-notation is *O(nLog n)*
 3. If n can be divided by A, n=A\*B, we just need to check A<=B condition, so the range of div is 1000 to sqrt(n) for 8 digit n. O-notation is also *O(nLog n)*, but better than method-2.
-4. Another elegant algorithm is to use permutation. The number of calculation is 8P8=8!=40320 for 8 digit n. Unfortunately it's more than method-3. Also it's not easy to create permutaion pattern in *C*. Python has *itertools*, it's easy to do this. 
+4. Another elegant algorithm is to use permutation. The number of calculation is 8P8=8!=40320 for 8 digit n. Unfortunately it's more than method-3. Also it's not easy to create permutaion pattern in *C*. Python has *itertools*, it's easy to do this.
 
 
 ## Problem-H: Like Father Like Son
@@ -196,17 +196,17 @@ This problem statement is a little bit ambiguous. If it's not possible to move f
 Sample input and output shows big hint to solve this problem. Last movement shall be smallest number and 2nd smallest must 2 or more bigger than smallest and already sorted except smallest element. If we remove smallest element, we can perform same logic to 2nd smallest.
 So this problem can be solved by removing smallest element 1 by 1.
 
-Though, this program is not resursive, the idea of recursion exists behind abovealgorithm. (Think from last movement to 1st movement)
+Though, this program is not resursive, the idea of recursion exists behind above algorithm. (Think from last movement to 1st movement)
 
 
 ## Problem-K: One Time Pad
 Keyword: Test case
 
-This is a easy problem. Take care for negative and big number of test case.
+This is a easy problem. Take care of negative and big number of test case.
 
 
 ## Problem-L: Password for Sweethearts
 Keyword: Data structure
 
-The combination of Merging 2 strings can be calculated by Pemutaion with repetition. If the length of the 2 strings is *a* and *b*, it's 2^(*a+b*). It's same as binary number of length (*a+b*). If the number of '1' is *a*, it's valid.
-As for checking duplicate, making list is easy solution. One of the concern is data size. In this case, maximum name length is 5, so up to 2^10=1024 need to be cared. 
+The combination of Merging 2 strings can be calculated by Pemutaion with repetition. If the length of the 2 strings is *a* and *b*, it's 2^(*a+b*). It's same as binary number of length (*a+b*). If the number of '1' is *a*, it's valid.  
+As for checking duplicate, making list is easy solution. One of the concern is data size. In this case, maximum name length is 5, so up to 2^10=1024 need to be cared. No problem.
