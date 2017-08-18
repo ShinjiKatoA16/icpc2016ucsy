@@ -242,7 +242,8 @@ This is a easy problem. Take care of negative and big number of test case.
 ## Problem-L: Password for Sweethearts
 Keyword: Data structure
 
-The combination of Merging 2 strings can be calculated by Pemutaion with repetition. If the length of the 2 strings is *a* and *b*, it's 2^(*a+b*). It's same as binary number of length (*a+b*). If the number of '0' is *a*, it's valid.  
+The combination of Merging 2 strings can be calculated by Pemutaion with repetition. If the length of the 2 strings is *a* and *b*, it's 2^(*a+b*). It's same as binary number of length (*a+b*). If the number of '0' is *a*, it can be treated as a valid string.  
 As for checking duplicate, making list is easy solution. One of the concern is data size. In this case, maximum name length is 5, so up to 2^10=1024 need to be cared. No problem.
+**Note** Using *Dictionay* instead of *List* seems to be better in Python.
 
 If the number of people is 3. Use *Tenary* instead of *Binary*.

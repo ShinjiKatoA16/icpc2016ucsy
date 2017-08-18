@@ -77,7 +77,7 @@ def solve(tc):
     parse_tc(tc)
 
     total_pw = 0
-    new_pw = list()
+    new_pw = dict()
 
     name1 = list(tc.names[0])
     name2 = list(tc.names[1])
@@ -88,7 +88,7 @@ def solve(tc):
         if num_bit1(i) != len_name1: continue
         mixed_str = mix_2str(name1, name2, i)
         if mixed_str not in new_pw:
-            new_pw.append(mixed_str)
+            new_pw[mixed_str] = True
             print(mixed_str)
             total_pw += 1
 
