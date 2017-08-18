@@ -36,11 +36,22 @@ Keyword: Data Structure, Big number, 1000000007
 
 If Python is allowed to solve this problem, it's not so difficult. Python can handle Unlimited integer.  
 
-In other langueage(ordinary algorithm), x(L+N)' can be up to  10^6 * (10^9 ^(10^5)), => 10^90006, maximum number of **double** in *C* is about 10^308.
+In other langueage, limitation of each data type is as foloows.
+
+- 32bit signed integer: +- 2\*10^9
+- 64bit signed integer: +- 4\*10^18
+- 64bit float(double): precision 15-16 digit, 10^308
+
+x(L+N)' can be up to  10^6 * (10^9 ^(10^5)), => 10^90006.
 In this problem, it's necessary to answer not only modulo but also the result of comparison.  
 One of the solution for this, is to have Double(Float) and Integer data for x(L+N)', Float data for rough size, Integer data for Modulo.  
-Because Float data can be overflown, it's necessary to divide it if it become more than specific number (for example 2^64), and save the divided count.
-Code in *C* is something like this.
+Because Float data can be overflown at 10^308, it's necessary to divide it if it become more than specific number (for example 2^64), and save the divided count.  
+**(NOTE)** 
+Actually, above method is not enough, if the 2 comparison data are very near(total number of digits and first 16 digits are same), the answer may not be correct.
+In order to reply acculate answer in any condition, handling unlimited integer may be necessary.
+But it's very difficult to make such a test data. May be using float is an expected  answer for this question.
+
+Code in *C* is something like this.  
 
 ```
 struct _gain {
@@ -185,7 +196,30 @@ For each Sons,
 ## Problem-I: Clustering
 Keyword: Data Structure, Recursion
 
-Typical problem of recursion.
+This is a typical problem of recursion.
+Using *Class* will improve the readability of this kind of program.
+
+I defined **CellData** class, whose instance represent each *Cell* (0 or 1 in test data). CellData class has a class variable *CellData.matrix*, which is a 2-dementional array of CellData instances.
+Each CellData instance has following instance variables.
+
+- self.r: (row number)
+- self.c: (column number)
+- self.val (0 or 1)
+- self.cluster (if val==0 None, val==1 Cluster Number)
+- self.neibour = (list of 8 adjacent CellData instance)
+
+After the intialization, following loop will solve this problem. cell.set_cluster() will call set_cluster() of neibour cell.
+
+```
+    num_cluster = 0
+    for r in range(tc.row):
+        for c in range(tc.col):
+            cell = CellData.matrix[r][c]
+            if cell.val == 1 and cell.cluster == None:
+                num_cluster += 1
+                cell.set_cluster(num_cluster)
+    print(num_cluster)
+```
 
 
 ## Problem-J: Green Frog and Ordering
@@ -193,7 +227,7 @@ Keyword: Problem reading, Recursion
 
 This problem statement is a little bit ambiguous. If it's not possible to move from 0 to 0, some problem can not be solved. For example (2, 1).  
 
-Sample input and output shows big hint to solve this problem. Last movement shall be smallest number and 2nd smallest must 2 or more bigger than smallest and already sorted except smallest element. If we remove smallest element, we can perform same logic to 2nd smallest.
+Sample input and output shows big hint to solve this problem. Last movement shall be smallest number and 2nd smallest must be 2 or more bigger than smallest and already sorted except smallest element. If we remove smallest element, we can perform same logic to 2nd smallest.
 So this problem can be solved by removing smallest element 1 by 1.
 
 Though, this program is not resursive, the idea of recursion exists behind above algorithm. (Think from last movement to 1st movement)
@@ -208,5 +242,7 @@ This is a easy problem. Take care of negative and big number of test case.
 ## Problem-L: Password for Sweethearts
 Keyword: Data structure
 
-The combination of Merging 2 strings can be calculated by Pemutaion with repetition. If the length of the 2 strings is *a* and *b*, it's 2^(*a+b*). It's same as binary number of length (*a+b*). If the number of '1' is *a*, it's valid.  
+The combination of Merging 2 strings can be calculated by Pemutaion with repetition. If the length of the 2 strings is *a* and *b*, it's 2^(*a+b*). It's same as binary number of length (*a+b*). If the number of '0' is *a*, it's valid.  
 As for checking duplicate, making list is easy solution. One of the concern is data size. In this case, maximum name length is 5, so up to 2^10=1024 need to be cared. No problem.
+
+If the number of people is 3. Use *Tenary* instead of *Binary*.
