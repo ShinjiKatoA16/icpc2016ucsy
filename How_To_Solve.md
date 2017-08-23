@@ -40,48 +40,32 @@ In other langueage, limitation of each data type is as foloows.
 
 - 32bit signed integer: +- 2\*10^9
 - 64bit signed integer: +- 4\*10^18
-- 64bit float(double): precision 15-16 digit, 10^308
+- 64bit float(double): precision 15 digit, 10^308
 
 x(L+N)' can be up to  10^6 * (10^9 ^(10^5)), => 10^90006.
 In this problem, it's necessary to answer not only modulo but also the result of comparison.  
-One of the solution for this, is to have Double(Float) and Integer data for x(L+N)', Float data for rough size, Integer data for Modulo.  
-Because Float data can be overflown at 10^308, it's necessary to divide it if it become more than specific number (for example 2^64), and save the divided count.  
+It looks like that calculating multiply of N-ary Number (Base: 10^9+7) is the simplest solution for this problem.
+(Assuming that 10^9+7 = P, and each digit(Xn) represents from 0 to 10^9+6)
+
+```
++---+-------+-----+---+---+---+---+
+| Xn| X(n-1)| X(.)| X3| X2| X1| X0| * m(multiplier in the problem description)
+| - |  ---  |  -  | - | - | - | - |
+|P^n|P^(n-1)| ... |P^3|P^2|P^1|P^0|
++---+-------+-----+---+---+---+---+
+
+        ==>
+
+Digit of P^0: (X0 * m) mod P   ( Carry = (X0 * m) // P )
+Digit of P^1: (X1 * m + Carry) mod P ( Carry = (X1 * m + Carry) // P )
+Digit of P^2: (X2 * m + Carry) mod P ( Carry = (X2 * m + Carry) // P )
+        ...
+```
+
 **(NOTE)** 
-Actually, above method is not enough, if the 2 comparison data are very near(total number of digits and first 16 digits are same), the answer may not be correct.
-In order to reply acculate answer in any condition, handling unlimited integer may be necessary.
-But it's very difficult to make such a test data. May be using float is an expected  answer for this question.
 
-Code in *C* is something like this.  
+At first, I thought that keeping a rough value in Float is a good idea, but the accuracy of 64bit-Float is 15 digits in decimal, which is not enough.
 
-```
-struct _gain {
-    int divided_count ; // number of time gain_real exceed 2**100
-    double gain_real ;
-    long gain_mod ;    // modulo of 10**9+7
-} ;
-
-
-struct _gain gain ;
-
-// gain = tc.x_i[voter-1] * (m[3] ** (voter - m[1]))
-// if gain > best_gain and gain > tc.x_i[voter-1]:
-
-    gain.divided_count = 0
-    gain.gain_mod = tc.x_i[voter-1]
-    gain.gain_real = (double)tc.x_i[voter-1]
-
-    for (i=0; i< voter-m[1]; i++) {
-        gain.gain_mod = (gain_mod * m[3]) % BIG_PRIME_NUMBER ;
-        gain.gain_real = gain_real * m[3] ;
-        if gain_real > N2_64 {
-            gain.divided_count ++ ;
-            gain_real /= N2_64 ;
-        }
-    }
-
-    if gain.divided_count > best... ||
-       gain.divided_count == best.. && gain.gain_real > best....
-```
 
 ## Problem-C: Finding the Determinant
 Keyword: Recursion
