@@ -15,7 +15,7 @@ class TestCase():
 def parse_tc(tc):
     '''
         Input: Test Case
-        Update: Start Location, Delivery List
+        Update: Names in Test case
         Return: None
     '''
 
@@ -42,8 +42,8 @@ def num_bit1(n):
 
 def mix_2str(list1, list2, bitmap):
     '''
-        list1: List of 1 char string
-        list2: List of 1 char string
+        list1: Name of first person in List format
+        list2: Name of second person in List format
         bitmap: Integer, 1b in each position represent List1 str
         Return: Combined string
     '''
