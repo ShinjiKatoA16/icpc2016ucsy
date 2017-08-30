@@ -145,7 +145,7 @@ Keyword: Performance
 It seems to be that there is not good algorithm to solve Vampire number effectively. Basically, we need to solve this problem with *brute force*, but there are some ideas to reduce the volume of calculation.
 
 ```
-   for (n=U; n<=U; n++) {
+   for (n=L; n<=U; n++) {
        for (div=1; div<n; div++) {
            if (n % div == 0) {
               check_vampire(n,div)
