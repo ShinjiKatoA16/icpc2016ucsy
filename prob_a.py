@@ -40,6 +40,8 @@ def str2token(formula):
         else:
             raise ValueError
 
+    if digit != '':
+        token_list.append(digit)
 #    print(token_list, file=sys.stderr)
     return token_list
 
