@@ -31,7 +31,7 @@ def str2token(formula):
                 token_list.append(digit)
                 digit = ''
             token_list.append(c)
-        elif c in '0123456789':
+        elif c in '0123456789.':
             digit += c
         elif c in '\n':
             if digit != '':
