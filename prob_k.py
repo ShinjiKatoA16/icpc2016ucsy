@@ -33,7 +33,9 @@ def solve(tc):
         Return: None
     '''
 
-    ALPHABET = 2 * 'abcdefghijklmnopqrstuvwxyz'
+    import string
+
+    ALPHABET = 2 * string.ascii_lowercase
     parse_tc(tc)
 
     out = ''
