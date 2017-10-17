@@ -44,14 +44,13 @@ def vampire(n):
     if (len(n_str) < 3) or (len(n_str) % 2 != 0):
         return False 
 
-    low_limit = 10**(len(n_str) // 2 - 1)
     high_limit_x = int(n ** 0.5)
-    high_limit_y = 10**(len(n_str) // 2)
+    div_high = 10**(len(n_str) // 2)
+    low_limit = n // div_high + 1
 
     for x in range(low_limit, high_limit_x+1):
         if n % x != 0: continue
         y = n // x
-        if (y >= high_limit_y): continue
         if (x % 10 == 0) and (y % 10 == 0): continue
         if not check_combination(n_str, x, y): continue
         print(n,'=',x,'*',y,sep='')
