@@ -22,8 +22,8 @@ def parse_tc(tc):
     tc.deliveryList = list()
     tc.startLocation = 0
 
+    END_OF_DATA = -999
     while True:
-        END_OF_DATA = -999
         loc = int(sys.stdin.readline())
         if loc == END_OF_DATA: break
         tc.deliveryList.append(loc)
@@ -40,29 +40,26 @@ def solve(tc):
     '''
 
     parse_tc(tc)
-    upward = list()
-    downward = list()
 
-    for i in tc.deliveryList:
-        if i > tc.startLocation:
-            upward.append(i - tc.startLocation)
-        else:
-            downward.append(tc.startLocation - i)
+    up_most = max(tc.deliveryList)
+    down_most = min(tc.deliveryList)
 
-    if (len(upward) == 0): up_max = 0
-    else: up_max = max(upward)
-
-    if (len(downward) == 0): down_max = 0
-    else: down_max = max(downward)
-
-    if up_max < down_max:
-        if up_max != 0: print('Upward_First')
-        else: print('Downward_First')
-        total_distance = up_max * 2 + down_max
+    if tc.startLocation <= down_most:
+        print('Upward_First')
+        total_distance = up_most - tc.startLocation
+    elif tc.startLocation >= up_most: 
+        print('Downward_First')
+        total_distance = tc.startLocation - down_most
     else:
-        if down_max != 0: print('Downward_First')
-        else: print('Upward_First')
-        total_distance = down_max * 2 + up_max
+        up_distance = up_most - tc.startLocation
+        down_distance = tc.startLocation - down_most
+        
+        if up_distance < down_distance:
+            print('Upward_First')
+            total_distance = up_distance * 2 + down_distance
+        else:
+            print('Downward_First')
+            total_distance = down_distance * 2 + up_distance
 
     print(total_distance)
     return
