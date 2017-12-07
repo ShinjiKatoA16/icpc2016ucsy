@@ -44,15 +44,16 @@ def solve(tc):
     up_most = max(tc.deliveryList)
     down_most = min(tc.deliveryList)
 
+    up_distance = up_most - tc.startLocation
+    down_distance = tc.startLocation - down_most
+
     if tc.startLocation <= down_most:
         print('Upward_First')
-        total_distance = up_most - tc.startLocation
+        total_distance = up_distance
     elif tc.startLocation >= up_most: 
         print('Downward_First')
-        total_distance = tc.startLocation - down_most
+        total_distance = down_distance
     else:
-        up_distance = up_most - tc.startLocation
-        down_distance = tc.startLocation - down_most
         
         if up_distance < down_distance:
             print('Upward_First')
