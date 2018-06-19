@@ -32,7 +32,7 @@ Following is the overall sequence to convert and evaluate data.
 ## Problem-B: The Election
 (ordinary algorithm is not yet impemented)
 
-Keyword: Data Structure, Big number, 1000000007
+Keyword: Data Structure, Big number, 100000007
 
 If Python is allowed to solve this problem, it's not so difficult. Python can handle Unlimited integer.  
 
